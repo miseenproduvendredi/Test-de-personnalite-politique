@@ -436,7 +436,7 @@ function rIntro(){
 </div>
 <div class="card" style="margin-bottom:12px;background:var(--wg);border-color:var(--wb)">
   <p style="font-size:14px;font-weight:700;color:var(--wt);margin-bottom:7px">⚠️ Attention : "Sans opinion"</p>
-  <p style="font-size:13.5px;line-height:1.7;color:var(--wt);margin:0">Répondre "sans opinion" assigne la valeur <strong>0</strong> à votre vote, ce qui tire le score vers <strong>50 %</strong> sur cette question — atténuant les différences entre candidats. Si vous ne connaissez pas un sujet, utilisez <strong>❓ Je ne connais pas ce sujet</strong> : la question sera totalement exclue du calcul, sans biaiser le résultat.</p>
+  <p class="bm" style="color:var(--wt)">Répondre "sans opinion" assigne la valeur <strong>0</strong> à votre vote, ce qui tire le score vers <strong>50 %</strong> sur cette question — atténuant les différences entre candidats. Si vous ne connaissez pas un sujet, utilisez <strong>❓ Je ne connais pas ce sujet</strong> : la question sera totalement exclue du calcul, sans biaiser le résultat.</p>
 </div>
 ${isFlt?`<div class="card" style="margin-bottom:12px;background:var(--rg);border:1px solid var(--rb)">
   <p style="font-size:14px;font-weight:700;color:var(--rt);margin-bottom:10px">🚫 Mode Filtre Décisif — comment fonctionne l'élimination ?</p>
@@ -455,7 +455,7 @@ ${isFlt?`<div class="card" style="margin-bottom:12px;background:var(--rg);border
 
 function rQuiz(){
   const q=aQ[ci],a=ans[q.id],isFlt=mode==='filter',isLast=ci===aQ.length-1;
-  const pct=Math.round(ci/aQ.length*100);
+  const pct=(isLast&&a!==undefined)?100:Math.round(ci/aQ.length*100);
   const sc=v=>{if(a===v)return v===-2?'sn2':v===-1?'sn1':v===0?'s0':v===1?'s1':'s2';return '';};
   const isDet=detOpen.has(q.id);
   const ce=getElim(),ec=Object.keys(ce).length;
